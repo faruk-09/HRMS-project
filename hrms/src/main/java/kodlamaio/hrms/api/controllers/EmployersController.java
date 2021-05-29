@@ -16,43 +16,46 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import kodlamaio.hrms.business.abstracts.UserService;
+import kodlamaio.hrms.business.abstracts.EmployerService;
+import kodlamaio.hrms.core.utilities.ApiPaths;
 import kodlamaio.hrms.core.utilities.DataResult;
 import kodlamaio.hrms.core.utilities.Result;
-import kodlamaio.hrms.core.utilities.ApiPaths;
-import kodlamaio.hrms.entities.concretes.User;
+import kodlamaio.hrms.entities.concretes.Employer;
+
+
 
 @RestController
-@RequestMapping(ApiPaths.UserCtrl.CTRL)
-@Api(value = "User APIs")
-public class UsersController {
+@RequestMapping(ApiPaths.EmployerCtrl.CTRL)
+@Api(value="Employer APIs")
+public class EmployersController {
 	
 	@Autowired
-	private UserService userService;
-	
+	public EmployerService employerService;
 	
 	@GetMapping("/getAll")
-	@ApiOperation(value = "User Get All Operation", response = User.class)
-	public DataResult<List<User>> getAll(){
-		return this.userService.getAll();
+	@ApiOperation(value = "Employer Get All Operation", response = Employer.class)
+	public DataResult<List<Employer>> getAll(){
+		return this.employerService.getAll();
 	}
 	
 	@PostMapping("/")
-	@ApiOperation(value = "User Add Operation", response = User.class)
-	public Result add(@RequestBody User user) {
-		return this.userService.add(user);
+	@ApiOperation(value = "Employer Add Operation", response = Employer.class)
+	public Result add(@RequestBody Employer employer) {
+		
+		return this.employerService.add(employer);
 	}
 	
 	@PutMapping("/{id}")
-	@ApiOperation(value = "User Update Operation", response = User.class)
-	public Result update (@PathVariable(value = "id", required = true) int id, @Valid @RequestBody User user){
-		return this.userService.update(id, user);
+	@ApiOperation(value = "Employer Update Operation", response = Employer.class)
+	public Result update (@PathVariable(value = "id", required = true) int id, @Valid @RequestBody Employer employer){
+		return this.employerService.update(id, employer);
 	}
 	
 	@DeleteMapping("/{id}")
-	@ApiOperation(value = "User Delete Operation", response = User.class)
+	@ApiOperation(value = "Employer Delete Operation", response = Employer.class)
 	public Result delete(@PathVariable(value = "id", required = true) int id){
-		return this.userService.delete(id);
+		return this.employerService.delete(id);
 	}
-	
+	 
+
 }

@@ -16,43 +16,44 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import kodlamaio.hrms.business.abstracts.UserService;
+import kodlamaio.hrms.business.abstracts.JobTitleService;
+import kodlamaio.hrms.core.utilities.ApiPaths;
 import kodlamaio.hrms.core.utilities.DataResult;
 import kodlamaio.hrms.core.utilities.Result;
-import kodlamaio.hrms.core.utilities.ApiPaths;
-import kodlamaio.hrms.entities.concretes.User;
+import kodlamaio.hrms.entities.concretes.JobTitle;
 
 @RestController
-@RequestMapping(ApiPaths.UserCtrl.CTRL)
-@Api(value = "User APIs")
-public class UsersController {
+@RequestMapping(ApiPaths.JobTitleCtrl.CTRL)
+@Api(value = "Job Title APIs")
+public class JobTitlesController {
 	
 	@Autowired
-	private UserService userService;
+	private JobTitleService jobTitleService;
 	
 	
 	@GetMapping("/getAll")
-	@ApiOperation(value = "User Get All Operation", response = User.class)
-	public DataResult<List<User>> getAll(){
-		return this.userService.getAll();
+	@ApiOperation(value = "Job Title Get All Operation", response = JobTitle.class)
+	public DataResult<List<JobTitle>> getAll(){
+		return this.jobTitleService.getAll();
 	}
 	
 	@PostMapping("/")
-	@ApiOperation(value = "User Add Operation", response = User.class)
-	public Result add(@RequestBody User user) {
-		return this.userService.add(user);
+	@ApiOperation(value = "Job Title Add Operation", response = JobTitle.class)
+	public Result add(@RequestBody JobTitle jobTitle) {
+		
+		return this.jobTitleService.add(jobTitle);
 	}
 	
 	@PutMapping("/{id}")
-	@ApiOperation(value = "User Update Operation", response = User.class)
-	public Result update (@PathVariable(value = "id", required = true) int id, @Valid @RequestBody User user){
-		return this.userService.update(id, user);
+	@ApiOperation(value = "Job Title Update Operation", response = JobTitle.class)
+	public Result update (@PathVariable(value = "id", required = true) int id, @Valid @RequestBody JobTitle jobTitle){
+		return this.jobTitleService.update(id, jobTitle);
 	}
 	
 	@DeleteMapping("/{id}")
-	@ApiOperation(value = "User Delete Operation", response = User.class)
+	@ApiOperation(value = "Job Title Delete Operation", response = JobTitle.class)
 	public Result delete(@PathVariable(value = "id", required = true) int id){
-		return this.userService.delete(id);
+		return this.jobTitleService.delete(id);
 	}
-	
+
 }
