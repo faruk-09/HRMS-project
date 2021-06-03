@@ -10,13 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@PrimaryKeyJoinColumn(name = "user_id",referencedColumnName = "id")
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "candidates")
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Data
@@ -34,20 +35,6 @@ public class Candidate extends User {
 	@Column(name = "birth_date")
 	private Date birthDay;
 
-	public Candidate(int id, String emailAddress, String password,  String firstName, String lastName, String identificationNumber, Date birthDay) {
-		super(id, emailAddress, password);
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.identificationNumber = identificationNumber;
-		this.birthDay = birthDay;
-	}
-	
-	public Candidate(String emailAddress, String password,  String firstName, String lastName, String identificationNumber, Date birthDay) {
-		super(emailAddress, password);
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.identificationNumber = identificationNumber;
-		this.birthDay = birthDay;
-	}
+
 
 }

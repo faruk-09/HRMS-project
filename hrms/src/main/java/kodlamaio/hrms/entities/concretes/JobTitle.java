@@ -22,9 +22,10 @@ public class JobTitle {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name= "id")
 	private int id;
 	
-	@Column(name="title", nullable = false, length = 50)
+	@Column(name="title")
 	private String title;
 
 	

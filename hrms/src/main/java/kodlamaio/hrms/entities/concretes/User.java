@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +25,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	
 	@Column(name = "email_address")
@@ -31,11 +34,7 @@ public class User {
 	@Column(name="password")
 	private String password;
 
-
-	public User(String email, String password) {
-		super();
-		this.email = email;
-		this.password = password;
-	}
+	@Transient
+	private String passwordCheck;
 
 }
