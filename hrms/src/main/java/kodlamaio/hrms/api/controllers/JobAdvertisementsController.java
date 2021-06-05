@@ -38,35 +38,12 @@ public class JobAdvertisementsController {
 	Result add(@RequestBody JobAdvertisement jobAdvertisement) {
 		return this.jobAdvertisementService.add(jobAdvertisement);
 	}
-
-	@GetMapping("/getbyjobdescription")
-	DataResult<List<JobAdvertisement>> getByJobDescription(@RequestParam String jobDescription) {
-		return this.jobAdvertisementService.getByJobDescription(jobDescription);
+	
+	@GetMapping("/listing")
+	DataResult<List<JobAdvertisement>> getAll2() {
+		return this.jobAdvertisementService.findAllByEnableTrueOrderByApplicationDeadLineDesc();
 	}
-
-	@GetMapping("/getbyisactive")
-	DataResult<List<JobAdvertisement>> getByIsActive(boolean isActive) {
-		return this.jobAdvertisementService.getByIsActive(isActive);
-	}
-
-	/*@GetMapping("/getjobddvertisementdetailsbyisactive")
-	DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetailsByIsActive(boolean isActive) {
-		return this.jobAdvertisementService.getByJobAdvertisementDetailsByIsActive(isActive);
-	}*/
-
-	@GetMapping("/getJobAdvertisementOrderByApplyDateAsc")
-	DataResult<List<JobAdvertisementDto>> getJobAdvertisementOrderByApplyDateAsc(boolean isActive) {
-		return this.jobAdvertisementService.getJobAdvertisementOrderByApplyDateAsc(isActive);
-	}
-
-	@GetMapping("/getJobAdvertisementDetailsWithCompanyName")
-	DataResult<List<JobAdvertisementDto>> getJobAdvertisementDetailsWithCompanyName(@RequestParam String companyName,
-			@RequestParam boolean isActive) {
-		return this.jobAdvertisementService.getJobAdvertisementDetailsWithCompanyName(companyName, isActive);
-	}
-
-	@PostMapping("/updateIsActiveAndEmployeerId")
-	Result updateIsActiveAndEmployeerId(@RequestParam int id, @RequestParam int employerId) {
-		return this.jobAdvertisementService.updateIsActiveAndEmployeerId(id, employerId);
-	}
+	
+	
+	
 }

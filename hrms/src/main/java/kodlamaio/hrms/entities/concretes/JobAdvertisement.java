@@ -34,7 +34,7 @@ public class JobAdvertisement {
 	private int salary;
 	
 	@Column(name = "application_deadline")
-	private Date applicationDeadline;
+	private Date applicationDeadLine;
 	
 	@Column(name = "open_position")
 	private int openPosition;

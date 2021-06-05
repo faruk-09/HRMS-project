@@ -14,7 +14,7 @@ public class JobAdvertisementDto {
 	private int id ;
 	private String jobDescription;
 	private int salary;
-	private Date applicationDeadline;
+	private Date applicationDeadLine;
 	private int openPosition;
-	private Boolean enable;
+	private boolean enable;
 }
